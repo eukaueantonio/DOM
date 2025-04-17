@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Ex01css.css">
+</head>
+
+<body>
+    <header>
+        <h1>Camisetas</h1>
+        <p>
+            Camiseta Branca - R$50,00 
+            <button onclick="adicionarCamisetaBranca()" id="adicionar-branca">Adicionar ao carrinho</button>
+        </p>
+
+        <p>
+            Camiseta Preta - R$40,00 
+            <button onclick="adicionarCamisetaPreta()" id="adicionar-preta">Adicionar ao carrinho</button>
+        </p>
+    </header>
+
+   <h2>Carrinho:</h2>
+    <ul id="listaDeTarefas"></ul>
+
+    <p id="somatoria">Total:</p>
+
+    <script>
+        function adicionarCamisetaBranca() {
+            adicionarItem("Camiseta Branca - R$50,00");
+        }
+
+        function adicionarCamisetaPreta() {
+            adicionarItem("Camiseta Preta - R$40,00");
+        }
+
+        function adicionarItem(itemTexto) {
+            let itemLista = document.createElement("li");
+            itemLista.innerText = itemTexto;
+
+            let botaoExcluir = document.createElement("button");
+            botaoExcluir.innerText = "Remover item";
+            botaoExcluir.onclick = function () {
+                itemLista.remove();
+            };
+
+            itemLista.appendChild(botaoExcluir);
+            document.getElementById("listaDeTarefas").appendChild(itemLista);
+
+            let zerinho = 0;
+
+            let totalzinho = itemLista += zerinho;
+
+            console.log(zerinho);
+            
+        }
+
+    </script>
+</body>
+
+</html>

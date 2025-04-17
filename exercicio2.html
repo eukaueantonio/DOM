@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1 id="modo">Modo Claro/Escuro</h1>
+    </header>
+    <main>
+        <button onclick="mudarTema()">Trocar Tema</button>
+    </main>
+    <footer></footer>
+</body>
+<script>
+    function mudarTema() {
+        if (document.body.style.backgroundColor === 'black') {
+            document.body.style.backgroundColor = 'white'
+            document.body.style.color = 'black'
+        } else {
+            document.body.style.backgroundColor = 'black'
+            document.body.style.color = 'white'
+
+        }
+
+    }
+</script>
+
+</html>
