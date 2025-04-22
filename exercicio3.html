@@ -1,63 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Ex01css.css">
+    <title>Compras</title>
 </head>
 
 <body>
     <header>
         <h1>Camisetas</h1>
-        <p>
-            Camiseta Branca - R$50,00 
-            <button onclick="adicionarCamisetaBranca()" id="adicionar-branca">Adicionar ao carrinho</button>
-        </p>
-
-        <p>
-            Camiseta Preta - R$40,00 
-            <button onclick="adicionarCamisetaPreta()" id="adicionar-preta">Adicionar ao carrinho</button>
-        </p>
     </header>
 
-   <h2>Carrinho:</h2>
-    <ul id="listaDeTarefas"></ul>
+    <main>
+        
+        <p>
+            Camiseta Preta - R$50 
+            <button onclick="adicionarAoCarrinho('Camiseta Preta', 50)">Adicionar</button>  
+        </p> 
 
-    <p id="somatoria">Total:</p>
+        <p>
+            Camiseta Branca - R$40 
+            <button onclick="adicionarAoCarrinho('Camiseta Branca', 40)">Adicionar</button>
+        </p>
+
+        <h2>Carrinho:</h2>
+        <ul id="lista-carrinho"></ul>
+        <p><strong>Total: R$ <span id="total">0.00</span></strong></p>
+    </main>
+
+    <footer></footer>
 
     <script>
-        function adicionarCamisetaBranca() {
-            adicionarItem("Camiseta Branca - R$50,00");
-        }
+        let total = 0;
 
-        function adicionarCamisetaPreta() {
-            adicionarItem("Camiseta Preta - R$40,00");
-        }
+        function adicionarAoCarrinho(nome, preco) { // dei parametros para poder chamar na function
+            let lista = document.getElementById('lista-carrinho'); // chamando id da lista no carrinho
+            let item = document.createElement('li'); // criando a lista 
+            item.textContent = `${nome} - R$ ${preco.toFixed(2)}`; // pegando as duas casa decimais
 
-        function adicionarItem(itemTexto) {
-            let itemLista = document.createElement("li");
-            itemLista.innerText = itemTexto;
+            lista.appendChild(item); // adiciona no final da lista
 
-            let botaoExcluir = document.createElement("button");
-            botaoExcluir.innerText = "Remover item";
-            botaoExcluir.onclick = function () {
-                itemLista.remove();
-            };
+            total += preco; // soma com o valor atual
+            document.getElementById('total').textContent = total.toFixed(2); // // pegando as duas casa decimais
 
-            itemLista.appendChild(botaoExcluir);
-            document.getElementById("listaDeTarefas").appendChild(itemLista);
-
-            let zerinho = 0;
-
-            let totalzinho = itemLista += zerinho;
-
-            console.log(zerinho);
             
-        }
+            let botaoExcluir = document.createElement("button"); //criacao do botao excluir
+            botaoExcluir.innerText = "Excluir"; // incluindo um texto no botao
+            item.appendChild(botaoExcluir); // adiciona o botao ao final
+            
+            botaoExcluir.onclick = () => {  // funcao de remover item
+                item.remove(); // remove o item do carrinho
+                total -= preco; // subtrai o preco
+                document.getElementById('total').textContent = total.toFixed(2);  // pegando as duas casa decimais
 
+            }
+        }
     </script>
 </body>
+
 
 </html>
